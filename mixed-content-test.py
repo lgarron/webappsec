@@ -17,8 +17,6 @@ class MainPage(webapp2.RequestHandler):
 
     def get(self):
 
-        server_url = app_identity.get_default_version_hostname()
-
         protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
 
         hsts_message_extra = ""
@@ -52,16 +50,11 @@ class Script(webapp2.RequestHandler):
 
     def get(self):
 
-        server_url = app_identity.get_default_version_hostname()
-
         protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
 
         template_values = {
             "protocol": protocol
         }
-
-        if os.environ['HTTP_HOST'].startswith("hsts."):
-            self.response.headers['Strict-Transport-Security'] = 'max-age=300'
 
         template = JINJA_ENVIRONMENT.get_template('dynamic/script.js')
         self.response.write(template.render(template_values))

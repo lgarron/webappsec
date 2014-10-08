@@ -12,8 +12,4 @@ if (["http", "https"].indexOf(protocol) == -1) {
 
 document.getElementById("messages").innerHTML += "<br><span class='" + protocol + "'>Script has loaded and run. [Protocol: " + protocol + "]</span>";
 
-if (protocol == "http") {
-  // document.getElementById("messages").style.borderColor = "#F00";
-  // document.getElementById("messages").classList.add("http");
-}
 {% endautoescape %}

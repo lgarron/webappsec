@@ -13,18 +13,6 @@ div.section {
   text-align: center;
 }
 
-a.monospace {
-  display: block;
-  font-family: monospace;
-  white-space: pre;
-  line-height: 1.5em;
-}
-
-hr {
-  margin: 1em;
-  border-top: 1px solid #888;
-}
-
 button {
   border: none;
   padding: 8px;
@@ -37,31 +25,30 @@ button:hover {
   cursor: pointer;
 }
 
-
 #messages {
   background: rgb(200, 200, 200);
   white-space: pre;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
   padding: 1em;
   margin-top: -0.7em;
   text-align: left;
   font-family: monospace;
 }
 
-.https:not(img) {
+.https {
   background: #4E4;
 }
 
-.http:not(img),
-#messages.http {
+.http {
   background: rgb(255, 82, 82);
 }
 
 img.https {
+  background: inherit;
   border: 16px solid #4E4;
 }
 
 img.http {
+  background: inherit;
   border: 16px solid rgb(255, 82, 82);
 }
 

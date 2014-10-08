@@ -57,9 +57,9 @@ button:hover {
 }
 
 img.https {
-  border: 5px solid #4E4;
+  border: 16px solid #4E4;
 }
 
 img.http {
-  border: 5px solid rgb(255, 82, 82);
+  border: 16px solid rgb(255, 82, 82);
 }

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
-  <!-- [START head_html] -->
-  <head>
-    <link type="text/css" rel="stylesheet" href="/static/main.css" />
-  </head>
-  <!-- [END head_html] -->
-  <body>
+<!-- [START head_html] -->
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+<!-- [END head_html] -->
+<body>
+<center>
 
-    <center>
-    Welcome to:<br><code>{{ host }}</code>
+Welcome to:<br><code>{{ host }}</code>
 
-    <br><br><hr><br>
+<hr>
 
-      <a class="monospace" href="http://{{ host }}"      >http: //     {{ host }}</a>
-      <a class="monospace" href="http://hsts.{{ host }}" >http: //hsts.{{ host }}</a>
-      <a class="monospace" href="https://{{ host }}"     >https://     {{ host }}</a>
-      <a class="monospace" href="https://hsts.{{ host }}">https://hsts.{{ host }}</a>
-    </center>
+  <a class="monospace" href="http://{{ host }}"      >http: //     {{ host }}</a>
+  <a class="monospace" href="http://hsts.{{ host }}" >http: //hsts.{{ host }}</a>
+  <a class="monospace" href="https://{{ host }}"     >https://     {{ host }}</a>
+  <a class="monospace" href="https://hsts.{{ host }}">https://hsts.{{ host }}</a>
 
+<hr>
 
-  </body>
+  <img src="/static/image.gif"><br>
+  <img src="/static/image.jpg"><br>
+
+<hr>
+
+  <div id="messages">Messages go here.</div>
+
+</center>
+
+<script src="/static/script.js"></script>
+
+</body>
 </html>
 {% endautoescape %}

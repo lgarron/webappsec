@@ -1,6 +1,20 @@
+html {
+  background: #FFF;
+}
+
 body {
   font-family: Verdana, Helvetica, sans-serif;
-  background-color: #AAA;
+  background-color: #DDD;
   max-width: 80%;
-  margin: auto;
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 2em;
+  font-size: 1.5em;
+}
+
+a.monospace {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  line-height: 1.5em;
 }

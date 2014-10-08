@@ -62,11 +62,9 @@
 <div class="section">
 
   <button onclick="addScript('http')" class="http">HTTP Script</button>
-  <button onclick="addScript('https')" class="https">HTTPS Script</button><br><br>
+  <button onclick="addScript('https')" class="https">HTTPS Script</button>
 
-  <div id="messages">Script Messages go here:<br></div>
-
-</div>
+</div><div class="section" id="messages">Script Messages go here:<br></div>
 <div class="section">
   {{ hsts_message }}<br><br>
   <button onclick="setHSTSMaxAge(0)">max-age=0</button>

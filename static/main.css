@@ -43,6 +43,7 @@ button:hover {
   white-space: pre;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
   padding: 1em;
+  margin-top: -0.7em;
   text-align: left;
   font-family: monospace;
 }

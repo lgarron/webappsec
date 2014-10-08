@@ -21,11 +21,17 @@ class MainPage(webapp2.RequestHandler):
 
         protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
 
+        hsts_message_extra = ""
+
         if self.request.get("hsts-max-age"):
             try:
                 hsts_max_age = int(self.request.get("hsts-max-age"))
                 self.response.headers['Strict-Transport-Security'] = ('max-age=%d' % hsts_max_age)
                 hsts_message = ("HSTS max-age sent: %d" % hsts_max_age)
+                if protocol != "https":
+                    hsts_message_extra += "(NOTE: this request was not sent over HTTPS, so your browser should ignore this value.)"
+                elif hsts_max_age == 0:
+                    hsts_message_extra += "(max-age=0 means that HSTS should be turned off for this domain now.)"
             except Exception:
                 self.response.headers['Strict-Transport-Security'] = 'invalid request'
                 hsts_message = "Invalid HSTS max-age requested."
@@ -35,7 +41,8 @@ class MainPage(webapp2.RequestHandler):
         template_values = {
             "protocol": protocol,
             "host": os.environ['HTTP_HOST'],
-            "hsts_message": hsts_message
+            "hsts_message": hsts_message,
+            "hsts_message_extra": hsts_message_extra
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')

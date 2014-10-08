@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <!-- [START head_html] -->
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <style>
+
+      html {
+        background: #FFF;
+      }
+
+      body {
+        font-family: Verdana, Helvetica, sans-serif;
+        background-color: #DDD;
+        max-width: 80%;
+        margin: 2em auto;
+        padding: 2em;
+        border-radius: 2em;
+        font-size: 1.5em;
+      }
+
+      a.monospace {
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        line-height: 1.5em;
+      }
+
+    </style
+  </head>
+  <!-- [END head_html] -->
+  <body>
+
+    <center>
+    Welcome to:<br><code>{{ host }}</code>
+
+    <br><br><hr><br>
+
+      <a class="monospace" href="http://{{ host }}"      >http: //     {{ host }}</a>
+      <a class="monospace" href="http://hsts.{{ host }}" >http: //hsts.{{ host }}</a>
+      <a class="monospace" href="https://{{ host }}"     >https://     {{ host }}</a>
+      <a class="monospace" href="https://hsts.{{ host }}">https://hsts.{{ host }}</a>
+    </center>
+
+
+  </body>
+</html>
+{% endautoescape %}

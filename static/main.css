@@ -1,14 +1,16 @@
-html {
-  background: #FFF;
-}
-
 body {
   font-family: Verdana, Helvetica, sans-serif;
-  background-color: #DDD;
-  max-width: 80%;
-  margin: 2em auto;
-  padding: 2em;
-  border-radius: 2em;
+}
+
+div.section {
+  max-width: 90%;
+  background-color: rgb(225, 225, 225);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 2px;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 a.monospace {
@@ -20,11 +22,44 @@ a.monospace {
 
 hr {
   margin: 1em;
+  border-top: 1px solid #888;
 }
 
+button {
+  border: none;
+  padding: 8px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 2px;
+  font-size: 1em;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
 #messages {
+  background: rgb(200, 200, 200);
   white-space: pre;
-  width: 256px;
-  border: 5px solid #AAA;
-  padding: 1em 0;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  padding: 1em;
+  text-align: left;
+  font-family: monospace;
+}
+
+.https:not(img) {
+  background: #4E4;
+}
+
+.http:not(img),
+#messages.http {
+  background: rgb(255, 82, 82);
+}
+
+img.https {
+  border: 5px solid #4E4;
+}
+
+img.http {
+  border: 5px solid rgb(255, 82, 82);
 }

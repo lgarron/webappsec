@@ -19,8 +19,11 @@ class MainPage(webapp2.RequestHandler):
 
         server_url = app_identity.get_default_version_hostname()
 
+        protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
+
         template_values = {
-            "host": server_url
+            "protocol": protocol,
+            "host": os.environ['HTTP_HOST']
         }
 
         if os.environ['HTTP_HOST'].startswith("hsts."):
@@ -29,8 +32,27 @@ class MainPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))
 
+class Script(webapp2.RequestHandler):
+
+    def get(self):
+
+        server_url = app_identity.get_default_version_hostname()
+
+        protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
+
+        template_values = {
+            "protocol": protocol
+        }
+
+        if os.environ['HTTP_HOST'].startswith("hsts."):
+            self.response.headers['Strict-Transport-Security'] = 'max-age=300'
+
+        template = JINJA_ENVIRONMENT.get_template('dynamic/script.js')
+        self.response.write(template.render(template_values))
+
 
 
 application = webapp2.WSGIApplication([
-    ('/', MainPage)
+    ('/', MainPage),
+    ('/dynamic/script.js', Script)
 ], debug=True)

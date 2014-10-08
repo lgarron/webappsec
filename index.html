@@ -4,32 +4,62 @@
 <!-- [START head_html] -->
 <head>
   <link type="text/css" rel="stylesheet" href="/static/main.css" />
+  <script>
+    function loadPage(protocol) {
+      var url = protocol + "://{{ host }}/";
+      window.location.href = url;
+    }
+    function changeImage(protocol) {
+      var url = protocol + "://{{ host }}/static/image.gif";
+      document.getElementById('img').src = url;
+
+      document.getElementById('img').classList.remove("http");
+      document.getElementById('img').classList.remove("https");
+      document.getElementById('img').classList.add(protocol);
+    }
+    function addScript(protocol) {
+      var url = protocol + "://{{ host }}/dynamic/script.js";
+      var scriptElement = document.createElement("script");
+      scriptElement.src = url;
+
+      document.getElementById("messages").innerHTML += "<br>Trying to load script. [Protocol: " + protocol + "]";
+      document.body.appendChild(scriptElement);
+    }
+  </script>
 </head>
 <!-- [END head_html] -->
-<body>
-<center>
+<body class="{{ protocol }}">
 
-Welcome to:<br><code>{{ host }}</code>
+<div class="section">
 
-<hr>
+  Mixed Content Test Site
 
-  <a class="monospace" href="http://{{ host }}"      >http: //     {{ host }}</a>
-  <a class="monospace" href="http://hsts.{{ host }}" >http: //hsts.{{ host }}</a>
-  <a class="monospace" href="https://{{ host }}"     >https://     {{ host }}</a>
-  <a class="monospace" href="https://hsts.{{ host }}">https://hsts.{{ host }}</a>
+  <br><br>
 
-<hr>
+  <button onclick="loadPage('http')" class="http">HTTP Page</button>
+  <button onclick="loadPage('https')" class="https">HTTPS Page</button>
 
-  <img src="/static/image.gif"><br>
-  <img src="/static/image.jpg"><br>
+  <!-- <a class="monospace" href="http://{{ host }}">http://{{ host }}</a> -->
+  <!-- <a class="monospace" href="https://{{ host }}">https://{{ host }}</a> -->
+  <!-- <a class="monospace" href="http://hsts.{{ host }}" >http: //hsts.{{ host }}</a> -->
+  <!-- <a class="monospace" href="https://hsts.{{ host }}">https://hsts.{{ host }}</a> -->
 
-<hr>
+</div>
+<div class="section">
 
-  <div id="messages">Messages go here.</div>
+  <button onclick="changeImage('http')" class="http">HTTP Image</button>
+  <button onclick="changeImage('https')" class="https">HTTPS Image</button><br><br>
+  <img src="" id="img" alt="Test Image (this is the alt text).">
 
-</center>
+</div>
+<div class="section">
 
-<script src="/static/script.js"></script>
+  <button onclick="addScript('http')" class="http">HTTP Script</button>
+  <button onclick="addScript('https')" class="https">HTTPS Script</button><br><br>
+
+  <div id="messages">Script Messages go here:<br></div>
+
+</div>
 
 </body>
 </html>

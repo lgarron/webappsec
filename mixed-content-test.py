@@ -21,13 +21,22 @@ class MainPage(webapp2.RequestHandler):
 
         protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
 
+        if self.request.get("hsts-max-age"):
+            try:
+                hsts_max_age = int(self.request.get("hsts-max-age"))
+                self.response.headers['Strict-Transport-Security'] = ('max-age=%d' % hsts_max_age)
+                hsts_message = ("HSTS max-age sent: %d" % hsts_max_age)
+            except Exception:
+                self.response.headers['Strict-Transport-Security'] = 'invalid request'
+                hsts_message = "Invalid HSTS max-age requested."
+        else:
+            hsts_message = "HSTS"
+
         template_values = {
             "protocol": protocol,
-            "host": os.environ['HTTP_HOST']
+            "host": os.environ['HTTP_HOST'],
+            "hsts_message": hsts_message
         }
-
-        if os.environ['HTTP_HOST'].startswith("hsts."):
-            self.response.headers['Strict-Transport-Security'] = 'max-age=300'
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))

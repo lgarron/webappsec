@@ -63,3 +63,11 @@ img.https {
 img.http {
   border: 16px solid rgb(255, 82, 82);
 }
+
+.https-light {
+  background: rgba(68, 238, 68, 0.25);
+}
+
+.http-light {
+  background: rgba(255, 82, 82, 0.25);
+}

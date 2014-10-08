@@ -22,7 +22,7 @@
       var scriptElement = document.createElement("script");
       scriptElement.src = url;
 
-      document.getElementById("messages").innerHTML += "<br>Trying to load script. [Protocol: " + protocol + "]";
+      document.getElementById("messages").innerHTML += "<br><span class='" + protocol + "-light'>Trying to load script. [Protocol: " + protocol + "]</span>";
       document.body.appendChild(scriptElement);
     }
   </script>

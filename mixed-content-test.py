@@ -48,10 +48,9 @@ class Script(webapp2.RequestHandler):
         protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
 
         template_values = {
-            "protocol": protocol
         }
 
-        template = JINJA_ENVIRONMENT.get_template('dynamic/script.js')
+        template = JINJA_ENVIRONMENT.get_template('resources/' + protocol + '/script.js')
         self.response.write(template.render(template_values))
 
 class Image(webapp2.RequestHandler):
@@ -68,6 +67,6 @@ class Image(webapp2.RequestHandler):
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/dynamic/script.js', Script),
+    ('/resources/script.js', Script),
     ('/resources/image.jpg', Image)
 ], debug=True)

@@ -19,7 +19,7 @@
       window.location.href = url;
     }
     function changeImage(protocol) {
-      var url = protocol + "://{{ host }}/resources/image.jpg";
+      var url = protocol + "://{{ host }}/image.jpg";
       document.getElementById('img').src = url;
 
       document.getElementById('img').classList.remove("http");
@@ -27,7 +27,7 @@
       document.getElementById('img').classList.add(protocol);
     }
     function addScript(protocol) {
-      var url = protocol + "://{{ host }}/resources/script.js";
+      var url = protocol + "://{{ host }}/script.js";
       var scriptElement = document.createElement("script");
       scriptElement.src = url;
 

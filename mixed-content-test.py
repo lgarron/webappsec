@@ -67,6 +67,6 @@ class Image(webapp2.RequestHandler):
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/resources/script.js', Script),
-    ('/resources/image.jpg', Image)
+    ('/script.js', Script),
+    ('/image.jpg', Image)
 ], debug=True)

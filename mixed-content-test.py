@@ -54,9 +54,20 @@ class Script(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('dynamic/script.js')
         self.response.write(template.render(template_values))
 
+class Image(webapp2.RequestHandler):
+
+    def get(self):
+
+        protocol = "https" if (os.environ['HTTPS'] == "on") else "http"
+        self.response.headers['Content-Type'] = "image/jpg"
+        with file('resources/' + protocol + '/image.jpg') as f:
+            source = f.read()
+        self.response.write(source)
+
 
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/dynamic/script.js', Script)
+    ('/dynamic/script.js', Script),
+    ('/resources/image.jpg', Image)
 ], debug=True)

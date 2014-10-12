@@ -38,7 +38,7 @@ class MainPage(webapp2.RequestHandler):
             "hsts_message_extra": hsts_message_extra
         }
 
-        template = JINJA_ENVIRONMENT.get_template('index.html')
+        template = JINJA_ENVIRONMENT.get_template('resources/templates/index.html')
         self.response.write(template.render(template_values))
 
 class Script(webapp2.RequestHandler):

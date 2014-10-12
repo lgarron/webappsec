@@ -5,6 +5,8 @@
 <head>
   <title>Mixed Content Test Site</title>
   <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <!-- HTML and CSS are inlined to avoid conflating them with test resources.  -->
   <script>
     function resetURL(age) {
       window.location.href = "//{{ host }}/";
@@ -33,6 +35,68 @@
       document.body.appendChild(scriptElement);
     }
   </script>
+  <style>
+    body {
+      font-family: Verdana, Helvetica, sans-serif;
+    }
+
+    div.section {
+      max-width: 90%;
+      background-color: rgb(225, 225, 225);
+      box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+      margin: 1em auto;
+      padding: 1em;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      padding: 8px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      border-radius: 2px;
+      font-size: 1em;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    #messages {
+      background: rgb(200, 200, 200);
+      white-space: pre;
+      padding: 1em;
+      margin-top: -0.7em;
+      text-align: left;
+      font-family: monospace;
+    }
+
+    .https {
+      background: #4E4;
+    }
+
+    .http {
+      background: rgb(255, 82, 82);
+    }
+
+    img.https {
+      background: inherit;
+      border: 16px solid #4E4;
+    }
+
+    img.http {
+      background: inherit;
+      border: 16px solid rgb(255, 82, 82);
+    }
+
+    .https-light {
+      background: rgba(68, 238, 68, 0.25);
+    }
+
+    .http-light {
+      background: rgba(255, 82, 82, 0.25);
+    }
+  </style>
 </head>
 <!-- [END head_html] -->
 <body class="{{ protocol }}">

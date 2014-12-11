@@ -26,13 +26,17 @@
       document.getElementById('img').classList.remove("https");
       document.getElementById('img').classList.add(protocol);
     }
-    function addScript(protocol) {
-      var url = protocol + "://{{ host }}/script.js";
+    function addScript(protocol, subdomainPrefix) {
+      subdomainPrefix = subdomainPrefix || "";
+      var url = protocol + "://" + subdomainPrefix + "{{ host }}/script.js";
       var scriptElement = document.createElement("script");
       scriptElement.src = url;
 
       document.getElementById("messages").innerHTML += "<br><span class='" + protocol + "-light'>Trying to load script. [Protocol: " + protocol + "]</span>";
       document.body.appendChild(scriptElement);
+    }
+    function addInsecureSubdomainScript() {
+      addScript("http", "insecure-subdomain.");
     }
   </script>
   <style>
@@ -123,6 +127,9 @@
 
   <button onclick="addScript('http')" class="http">HTTP Script</button>
   <button onclick="addScript('https')" class="https">HTTPS Script</button>
+  <br><br>
+  <button onclick="addInsecureSubdomainScript('http')" class="http">Subdomain HTTP Script</button>
+  
 
 </div><div class="section" id="messages">Script Messages go here:<br></div>
 <div class="section">

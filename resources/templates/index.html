@@ -47,23 +47,25 @@
     div.section {
       max-width: 90%;
       background-color: rgb(225, 225, 225);
-      box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
       margin: 1em auto;
       padding: 1em;
-      border-radius: 2px;
       text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 
     button {
       border: none;
       padding: 8px;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-      border-radius: 2px;
+      margin: auto 4px;
       font-size: 1em;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      transition: all 150ms;
     }
 
     button:hover {
       cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      transform: translateY(-2px);
     }
 
     #messages {
